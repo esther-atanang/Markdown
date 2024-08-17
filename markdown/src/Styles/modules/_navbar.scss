@@ -1,0 +1,125 @@
+@mixin flex_content($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar {
+    width: 100%;
+    background-color: var(--color-primary-3);
+    @include flex_content();
+    .btn {
+      border: none;
+      background-color: transparent;
+    }
+
+    .navbar__menu {
+      background-color: var(--color-primary-4);
+      &:hover {
+        background-color: var(--color-accent-1);
+      }
+  
+      .navbar__menu-btn {
+        padding: 1.5rem;
+  
+        .navbar__menu-icon {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  
+    .navbar__content {
+      @include flex_content();
+      flex: 1;
+      padding: 0.5rem 1rem; //Top and bottom is 0.5 for mobile
+      color: var(--color-neutral-1);
+  
+      .navbar__file-name-container {
+        .navbar__file-name-placeholder {
+          display: none;
+        }
+  
+        @media screen and (min-width: 768px) {
+          .navbar__file-name-placeholder {
+            display: block;
+            color: var(--color-secondary-1);
+            font-weight: 400;
+            font-size: 0.9rem;
+          }
+        }
+      }
+  
+      .navbar__file-desc {
+        @include flex_content();
+        column-gap: 10px;
+  
+        .logo {
+          display: none;
+        }
+  
+        @media screen and (min-width: 900px) {
+          .logo {
+            display: block;
+            text-transform: uppercase;
+            font-family: var(--font-3);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            border-right: 1px solid var(--color-secondary-1);
+            padding: 1rem;
+          }
+        }
+  
+        // font-weight: 400;
+        .navbar__icon {
+          width: 20px;
+          height: 20px;
+        }
+  
+        .navbar__file-name {
+          background-color: transparent;
+          color: var(--color-neutral-2);
+          font-weight: 400;
+          outline: transparent;
+          border: none;
+         
+          &:focus{
+            border-bottom: 1.5px solid var(--color-neutral-2); //This should be when it is  clicked
+          }
+        }
+      }
+  
+      .navbar__btns {
+        display: flex;
+        column-gap: 10px;
+        justify-content: flex-end;
+  
+        .navbar__btn--save {
+          @include flex_content();
+          font-weight: 400;
+          column-gap: 8px;
+          text-transform: capitalize;
+          background-color: var(--color-accent-1);
+          padding: 0.5rem 0.8rem;
+          border-radius: 5px;
+          &:hover {
+            background-color: var(--color-accent-2);
+          }
+  
+          p {
+            display: none;
+          }
+  
+          @media screen and (min-width: 768px) {
+            p {
+              display: block;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+  
