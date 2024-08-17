@@ -31,7 +31,7 @@ const Navbar = ({ onClick, onDelete, currID, fileName, onSave, onChangeFileName 
             <button
               className="btn navbar__btn--delete"
               type="button"
-              onClick={() => onDelete(currID)}
+              onClick={() => onDelete(true)}
               disabled={currID === -1}
             >
               <img className="icon icon--hover navbar__btn-icon" src={bin} alt="Delete" />

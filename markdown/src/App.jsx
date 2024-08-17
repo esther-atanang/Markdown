@@ -11,10 +11,12 @@ function App() {
   const [isMenuOpen, setSidebarOpen] = useState(false)
   const [isLight, setLightMode] = useState(false)
   const [openPreview, setPreview] = useState(false)
+  const [isDelete, setDelete] = useState(false)
   const notifyRef = useRef()
   const currentNote = useMemo(()=>{
     return notes ? notes.find((note) => note.currentFile) : null
   },[notes])
+ 
 
 
   useEffect(() => {
@@ -51,6 +53,7 @@ function App() {
       type: "delete_file",
       file_id: id
     })
+    setDelete(false)
   }
 
   //This is to switch between files
@@ -81,7 +84,7 @@ function App() {
   
 
   return (
-    <div className={`app ${isMenuOpen ? "menuOpen" : ""}`} data-theme={isLight ? "light" : "dark"}>
+    <div className={`app ${isMenuOpen ? "menuOpen" : ""} ${isDelete ? "delete-modal-show": ""}`} data-theme={isLight ? "light" : "dark"}>
 
     <div className="notification" ref={notifyRef}>
       <img src={checked} alt="icon" />
@@ -101,7 +104,7 @@ function App() {
     <div className="app__main-content">
       <Navbar
         onClick={handleOpen}
-        onDelete={handleDelete}
+        onDelete={setDelete}
         currID={currentNote?.id ?? -1}
         fileName={currentNote?.fileName ?? ""}
         onSave={() => handleSave(currentNote.id)}
@@ -121,16 +124,16 @@ function App() {
         />
       </div>
     </div>
+
+    {isDelete && <div className="delete-modal">
+         <h3 className="delete-modal__title">Delete this document?</h3>
+         <p className="delete-modal__message">Are you sure you want to delete <span className="file-name">‘welcome.md’</span> document and its contents? This action cannot be reversed.</p>
+         <button className="delete-modal__btn btn" onClick={()=>handleDelete(currentNote.id)}>Confirm & delete</button>
+      </div>}
+
   </div>
   
   )
 }
 export default App;
 
-{/* 
-  HOOK THIS UP!!!
-  <div className="delete-modal">
-         <h3 className="delete-modal__title">Delete this document?</h3>
-         <p className="delete-modal__message">Are you sure you want to delete <span className="file-name">‘welcome.md’</span> document and its contents? This action cannot be reversed.</p>
-         <button className="delete-modal__btn btn">Confirm & delete</button>
-      </div> */}

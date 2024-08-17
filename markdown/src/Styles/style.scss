@@ -121,15 +121,7 @@ body {
 }
 .app {
   //THE BACKDROP WHEN THE DELETE BUTTON IS CLICKED
-  // &:after{
-  //   content: "";
-  //   position: absolute;
-  //   top: 0;
-  //   bottom: 0;
-  //   left: 0;
-  //   right: 0;
-  //   background-color: #7c81872a;
-  // }
+
   position: relative;
  
   .app__sidebar {
@@ -207,6 +199,15 @@ body {
     transition: background;
   }
 }
+  .delete-modal-show:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #7c81872a;
+  }
 
 //Basic utilities
 .icon {

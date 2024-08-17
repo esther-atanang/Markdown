@@ -1,8 +1,25 @@
-# React + Vite
+# Markdown Webapp
+### Built with React on Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### Basic Functionality
+- Create new files
+- Delete a file
+- Rename a file
+- Preview your markdown
 
-Currently, two official plugins are available:
+#### Issue with Legacy Browser Support
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application is built on Vite, which supports the latest JavaScript features. However, these features may not be compatible with older legacy browsers.
+
+Specifically:
+- I used a top-level `await` syntax, which is not supported on these legacy browsers.
+- My goal is to load a file immediately when the user opens the application, such as a welcome file guiding them on how to use the markdown editor.
+
+This feature may not work as intended in legacy browsers due to the lack of support for modern JavaScript features.
+
+#### How to Install on Your Local Machine
+
+1. Git clone the repo.
+2. `cd markdown`
+3. `npm install`
+4. That's it! The application is now installed on your local machine.
