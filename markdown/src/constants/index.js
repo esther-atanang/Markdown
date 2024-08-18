@@ -7,8 +7,10 @@ export const NAVBAR = {
 export const find_date = () =>{
     let d = new Date()
     const month = d.toLocaleString('default', { month: 'long' });
-    return d.getDay() + " "+month + " "+ d.getFullYear() 
+    console.log(d.getDay())
+    return d.getDate() + " "+ month + " "+ d.getFullYear() 
 }
+
 export const WELCOMEDATA = {
     id: "welcome",
     fileName: "welcome.md",
